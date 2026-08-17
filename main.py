@@ -7,8 +7,8 @@ from telebot import types
 # CONFIG
 # =========================================================
 
-BOT_TOKEN = os.getenv("8611335484:AAHoH8mg1OO9V7PDB3wUlZ6wU3HxsQx7avY", "")
-ADMIN_ID = int(os.getenv("5815294733", "0"))
+BOT_TOKEN = os.getenv("BOT_TOKEN", "8611335484:AAHoH8mg1OO9V7PDB3wUlZ6wU3HxsQx7avY")
+ADMIN_ID = int(os.getenv("ADMIN_ID", "5815294733"))
 
 if not BOT_TOKEN:
     raise RuntimeError("BOT_TOKEN topilmadi!")
