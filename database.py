@@ -18,7 +18,11 @@ def init_database():
     with get_connection() as conn:
         with conn.cursor() as cur:
 
-            with open("schema.sql", "r", encoding="utf-8") as file:
+            with open(
+                "sxema.sql",
+                "r",
+                encoding="utf-8"
+            ) as file:
                 schema = file.read()
 
             cur.execute(schema)
