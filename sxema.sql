@@ -71,3 +71,28 @@ ON messages(telegram_chat_id);
 
 CREATE INDEX IF NOT EXISTS idx_messages_username
 ON messages(username);
+CREATE TABLE IF NOT EXISTS vip_requests (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    amount INTEGER NOT NULL,
+    duration_days INTEGER NOT NULL,
+    status TEXT NOT NULL DEFAULT 'PENDING',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    processed_at TIMESTAMP,
+    processed_by BIGINT
+);
+
+CREATE TABLE IF NOT EXISTS vip_users (
+    user_id BIGINT PRIMARY KEY,
+    started_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_vip_requests_user
+ON vip_requests(user_id);
+
+CREATE INDEX IF NOT EXISTS idx_vip_requests_status
+ON vip_requests(status);
+
+CREATE INDEX IF NOT EXISTS idx_vip_users_expires
+ON vip_users(expires_at);
